@@ -1083,12 +1083,7 @@ class Qwen2_5_VLModel(Qwen2_5_VLPreTrainedModel):
         self.language_model = Qwen2_5_VLTextModel._from_config(config.text_config)
         self.visual = PT_mtfk(
             config = config.vision_config, 
-            num_sp = [
-                "visual_init_mean_7_2025-09-05T08:46:22.191756.pt",
-                "visual_init_mean_15_2025-09-05T08:46:22.194103.pt",
-                "visual_init_mean_23_2025-09-05T08:46:22.194362.pt",
-                "visual_init_mean_31_2025-09-05T08:46:22.194564.pt",
-            ]
+            num_sp = config.prompt_tuning_config.visual,
         )
         
         self.rope_deltas = None  # cache rope_deltas here
